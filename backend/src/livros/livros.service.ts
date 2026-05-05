@@ -30,11 +30,20 @@ export class LivrosService {
     return `This action returns a #${id} livro`;
   }
 
-  update(id: number, updateLivroDto: UpdateLivroDto) {
+  update(id: number, dados:Partial<Livro>) {
+    const index = this.livros.findIndex(livro => livro.id===id);
+    if(index >=0){
+      this.livros[index]={...this.livros[index],...dados};
+    }
     return `This action updates a #${id} livro`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} livro`;
+    const index = this.livros.findIndex(livro => livro.id===id);
+    if(index >=0){
+      this.livros.splice(index,1);
+      return `O livro #${id} foi removido com sucesso`;
+    }
+    return `O livro #${id} não foi encontrado.`;
   }
 }

@@ -36,7 +36,7 @@ export class LivrosService {
       this.livros[index]={...this.livros[index],...dados};
       return `O livro #${id} foi atualizado`;
     }
-    return `O livro #${id} Não foi encontrado`;
+    return `O livro #${id} Não foi atualizado`;
   }
 
   remove(id: number) {
